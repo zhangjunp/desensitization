@@ -1,0 +1,6 @@
+server:
+  port: 9000
+
+log:
+  reqId: reqId
+  remoteAddr: remoteAddr
