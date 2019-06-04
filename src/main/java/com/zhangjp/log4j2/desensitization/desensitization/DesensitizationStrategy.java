@@ -1,4 +1,4 @@
-package com.sunjinke.log4j2.desensitization.desensitization;
+package com.zhangjp.log4j2.desensitization.desensitization;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +9,8 @@ import java.util.Map;
  * 描述：脱敏器策略工厂
  */
 public interface DesensitizationStrategy {
-//    类似于 策略工厂的 context
-    Map<String,DesensitizationStrategy> DEVICE_METHOD_MAP = new HashMap<>();
+    //    类似于 策略工厂的 context
+    Map<String, DesensitizationStrategy> DEVICE_METHOD_MAP = new HashMap<>();
 
     /***
      * <p>Description: 脱敏规则</p>
@@ -19,7 +19,7 @@ public interface DesensitizationStrategy {
      * @author zhangjunping
      * @date 2019/4/2 20:43
      */
-    String produceCipherText (String plaintext);
+    String produceCipherText(String plaintext);
 
     void addDeviceToMap();
 }

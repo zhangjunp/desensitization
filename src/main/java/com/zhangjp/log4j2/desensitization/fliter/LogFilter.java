@@ -1,4 +1,4 @@
-package com.sunjinke.log4j2.desensitization.fliter;
+package com.zhangjp.log4j2.desensitization.fliter;
 
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
@@ -34,11 +34,11 @@ public class LogFilter implements Filter {
 //        配合 其他 微服务路由追踪插件来实现 追踪
         String reqIdValue = UUID.randomUUID().toString();
         String remoteAddrValue = request.getRemoteAddr();
-        ThreadContext.put(remoteAddr,remoteAddrValue);
-        ThreadContext.put(reqId,reqIdValue);
-        log.info("-------请求开始,此次业务代码:{}，请求源IP:{}------",reqIdValue,remoteAddrValue);
-        chain.doFilter(request,response);
-        log.info("-------请求结束,此次业务代码:{}，请求源IP:{}------",reqIdValue,remoteAddrValue);
+        ThreadContext.put(remoteAddr, remoteAddrValue);
+        ThreadContext.put(reqId, reqIdValue);
+        log.info("-------请求开始,此次业务代码:{}，请求源IP:{}------", reqIdValue, remoteAddrValue);
+        chain.doFilter(request, response);
+        log.info("-------请求结束,此次业务代码:{}，请求源IP:{}------", reqIdValue, remoteAddrValue);
         ThreadContext.clearMap();
 
 

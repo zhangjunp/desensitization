@@ -5,7 +5,9 @@
 <Configuration status="OFF" monitorInterval="240">
     <Properties>
         <Property name="filePath">./logs</Property>
-        <Property name="commonPattern">%highlight{【%X{reqId}】【%X{remoteAddr}】[%d{yyyy.MM.dd HH:mm:ss,sss z}] [%p] [%t] [%l] :%m%n}</Property>
+        <Property name="commonPattern">%highlight{【%X{reqId}】【%X{remoteAddr}】[%d{yyyy.MM.dd HH:mm:ss,sss z}] [%p] [%t]
+            [%l] :%m%n}
+        </Property>
         <Property name="header">%highlight{===============测试版本 V.10 ===================}</Property>
     </Properties>
     <!--先定义所有的输出源-->
@@ -26,7 +28,8 @@
 
         <!-- 这个会打印出所有的info及以下级别的信息，每次时间超过1天、大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
         <RollingFile name="INFOLOG"
-                     fileName="${filePath}/info.log" filePattern="${filePath}/archive/%d{yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.gz">
+                     fileName="${filePath}/info.log"
+                     filePattern="${filePath}/archive/%d{yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.gz">
             <Filters>
                 <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
                 <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
@@ -48,7 +51,8 @@
 
 
         <RollingFile name="ERRORLOG"
-                     fileName="${filePath}/error.log" filePattern="${filePath}/archive/%d{yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz">
+                     fileName="${filePath}/error.log"
+                     filePattern="${filePath}/archive/%d{yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz">
             <Filters>
                 <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
                 <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
@@ -69,7 +73,8 @@
         </RollingFile>
 
         <RollingFile name="ALLLOG"
-                     fileName="${filePath}/all.log" filePattern="${filePath}/archive/%d{yyyy-MM}/all-%d{yyyy-MM-dd}-%i.log.gz">
+                     fileName="${filePath}/all.log"
+                     filePattern="${filePath}/archive/%d{yyyy-MM}/all-%d{yyyy-MM-dd}-%i.log.gz">
             <MyPatternLayout pattern="${commonPattern}" header="${header}">
                 <jsonReplaces>
                     <jsonReplace keys="cardtelno,cardTelNo,mobileno,mobileNo" methodName="md5"/>
@@ -88,32 +93,31 @@
     <Loggers>
         <Root level="INFO">
             <appender-ref ref="Console"/>
-            <appender-ref ref="INFOLOG" />
-            <appender-ref ref="ERRORLOG" />
-            <appender-ref ref="ALLLOG" />
+            <appender-ref ref="INFOLOG"/>
+            <appender-ref ref="ERRORLOG"/>
+            <appender-ref ref="ALLLOG"/>
         </Root>
     </Loggers>
 </Configuration>
 
 
-
-<!--    将log输入到远程的服务器中    -->
-<!--
-<Syslog name="syslog" host="localhost" format="RFC5424" mdcId="mdc" enterpriseNumber="18060" appName="XXXX" facility="LOCAL0" port="9080" newline="true" protocol="TCP">
-     <LoggerFields>
-         <KeyValuePair key="tpasswd" value="%c" />
-         <KeyValuePair key="email" value="%p" />
-     </LoggerFields>
- </Syslog>
- <replaces>
-    &lt;!&ndash;脱敏手机号&ndash;&gt;
-    <replace regex="(cardtelno|cardTelNo|mobileno|mobileNo)(\\*&quot;:\\*&quot;)(\d{3})\d{4}(\d{4}\\*&quot;)" replacement="$1$2$3****$4"/>
-    &lt;!&ndash;脱敏份证号&ndash;&gt;
-    <replace regex="(certificateno|certificateNo)(\\*&quot;:\\*&quot;)(\d{3})\d{11,14}(\w{4}\\*&quot;)" replacement="$1$2$3**************$4"/>
-    &lt;!&ndash;脱敏银行卡号&ndash;&gt;
-    <replace regex="(depositacct|depositAcct|depositCard|depositcard)(\\*&quot;:\\*&quot;)(\d{3})\d{10,13}(\d{4}\\*&quot;)" replacement="$1$2$3*************$4"/>
-    &lt;!&ndash;脱敏密码&ndash;&gt;
-    <replace regex="(tpasswd|pwd|newpwd|newPwd|oldpwd|oldPwd)(\\*&quot;:\\*&quot;)(w{0})\w{0,}(\w{0}\\*&quot;)" replacement="$1$2$3******$4"/>
-    &lt;!&ndash;脱敏邮箱&ndash;&gt;
-    <replace regex="(email)(\\*&quot;:\\*&quot;)(\w{1})\w[-\w.+]*(@[A-Za-z0-9][-A-Za-z0-9]+\.+[A-Za-z]{2,14})(\\*&quot;)" replacement="$1$2$3******$4$5"/>
-</replaces>-->
+        <!--    将log输入到远程的服务器中    -->
+        <!--
+        <Syslog name="syslog" host="localhost" format="RFC5424" mdcId="mdc" enterpriseNumber="18060" appName="XXXX" facility="LOCAL0" port="9080" newline="true" protocol="TCP">
+             <LoggerFields>
+                 <KeyValuePair key="tpasswd" value="%c" />
+                 <KeyValuePair key="email" value="%p" />
+             </LoggerFields>
+         </Syslog>
+         <replaces>
+            &lt;!&ndash;脱敏手机号&ndash;&gt;
+            <replace regex="(cardtelno|cardTelNo|mobileno|mobileNo)(\\*&quot;:\\*&quot;)(\d{3})\d{4}(\d{4}\\*&quot;)" replacement="$1$2$3****$4"/>
+            &lt;!&ndash;脱敏份证号&ndash;&gt;
+            <replace regex="(certificateno|certificateNo)(\\*&quot;:\\*&quot;)(\d{3})\d{11,14}(\w{4}\\*&quot;)" replacement="$1$2$3**************$4"/>
+            &lt;!&ndash;脱敏银行卡号&ndash;&gt;
+            <replace regex="(depositacct|depositAcct|depositCard|depositcard)(\\*&quot;:\\*&quot;)(\d{3})\d{10,13}(\d{4}\\*&quot;)" replacement="$1$2$3*************$4"/>
+            &lt;!&ndash;脱敏密码&ndash;&gt;
+            <replace regex="(tpasswd|pwd|newpwd|newPwd|oldpwd|oldPwd)(\\*&quot;:\\*&quot;)(w{0})\w{0,}(\w{0}\\*&quot;)" replacement="$1$2$3******$4"/>
+            &lt;!&ndash;脱敏邮箱&ndash;&gt;
+            <replace regex="(email)(\\*&quot;:\\*&quot;)(\w{1})\w[-\w.+]*(@[A-Za-z0-9][-A-Za-z0-9]+\.+[A-Za-z]{2,14})(\\*&quot;)" replacement="$1$2$3******$4$5"/>
+        </replaces>-->

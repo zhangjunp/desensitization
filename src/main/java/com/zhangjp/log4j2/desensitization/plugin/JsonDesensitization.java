@@ -1,5 +1,6 @@
-package com.sunjinke.log4j2.desensitization.plugin;
+package com.zhangjp.log4j2.desensitization.plugin;
 
+import com.zhangjp.log4j2.desensitization.desensitization.DesensitizationStrategy;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
@@ -8,8 +9,6 @@ import org.apache.logging.log4j.status.StatusLogger;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static com.sunjinke.log4j2.desensitization.desensitization.DesensitizationStrategy.DEVICE_METHOD_MAP;
 
 
 /**
@@ -31,9 +30,9 @@ public final class JsonDesensitization {
     public String format(String msg) {
         String[] split = keys.split(",");
         StringBuilder sb = new StringBuilder("(");
-        for (int i = 0; i <split.length ; i++) {
+        for (int i = 0; i < split.length; i++) {
             sb.append("\"").append(split[i]).append("\"").append("|");
-            if (i == split.length-1){
+            if (i == split.length - 1) {
                 sb.append("\"").append(split[i]).append("\"");
             }
         }
@@ -41,10 +40,10 @@ public final class JsonDesensitization {
         Matcher matcher = Pattern.compile(sb.toString()).matcher(msg);
         if (matcher.find()) {
             String group = matcher.group(3);
-            if (null != DEVICE_METHOD_MAP.get(methodName)) {
-                String cipherText = DEVICE_METHOD_MAP.get(methodName).produceCipherText(group);
+            if (null != DesensitizationStrategy.DEVICE_METHOD_MAP.get(methodName)) {
+                String cipherText = DesensitizationStrategy.DEVICE_METHOD_MAP.get(methodName).produceCipherText(group);
                 msg = matcher.replaceAll("$1".concat("$2").concat(cipherText).concat("$4"));
-            }else{
+            } else {
                 LOGGER.warn("脱敏方法名:{}，不存在，请检查脱敏方法名是否正确！", methodName);
             }
         }

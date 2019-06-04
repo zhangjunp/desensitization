@@ -1,4 +1,4 @@
-package com.sunjinke.log4j2.desensitization.plugin;
+package com.zhangjp.log4j2.desensitization.plugin;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
@@ -23,7 +23,7 @@ public class JsonRegexReplaces {
     private final JsonDesensitization[] jsonDesensitization;
 
 
-    private JsonRegexReplaces(RegexReplacement[] replaces,JsonDesensitization[] jsonDesensitization) {
+    private JsonRegexReplaces(RegexReplacement[] replaces, JsonDesensitization[] jsonDesensitization) {
         this.replaces = replaces;
         this.jsonDesensitization = jsonDesensitization;
     }
@@ -32,7 +32,7 @@ public class JsonRegexReplaces {
      * 格式化输出日志信息， 此方法会执行多个正则表达式匹配与替换
      */
     public String format(String msg) {
-        for (JsonDesensitization json:jsonDesensitization) {
+        for (JsonDesensitization json : jsonDesensitization) {
             msg = json.format(msg);
         }
         for (RegexReplacement replace : replaces) {
@@ -56,6 +56,6 @@ public class JsonRegexReplaces {
             LOGGER.warn("have the jsonReplace , but no jsonReplace is set");
             return null;
         }
-        return new JsonRegexReplaces(replaces,jsonReplace);
+        return new JsonRegexReplaces(replaces, jsonReplace);
     }
 }

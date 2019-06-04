@@ -1,4 +1,4 @@
-package com.sunjinke.log4j2.desensitization.fastjson;
+package com.zhangjp.log4j2.desensitization.fastjson;
 
 import com.alibaba.fastjson.serializer.ValueFilter;
 import org.springframework.stereotype.Component;

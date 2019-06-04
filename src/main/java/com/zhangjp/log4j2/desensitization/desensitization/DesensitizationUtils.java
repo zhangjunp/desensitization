@@ -1,4 +1,4 @@
-package com.sunjinke.log4j2.desensitization.desensitization;
+package com.zhangjp.log4j2.desensitization.desensitization;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.DigestUtils;
@@ -13,11 +13,11 @@ public class DesensitizationUtils extends StringUtils {
     /***
      * <p>Description: md5 方式</p>
      * @param plaintext 明文
-     * @return java.lang.String 
+     * @return java.lang.String
      * @author zhangjunping
      * @date 2019/4/2 17:10
      */
-    public static String md5(String plaintext){
+    public static String md5(String plaintext) {
         return DigestUtils.md5DigestAsHex(plaintext.getBytes());
     }
 
@@ -66,20 +66,21 @@ public class DesensitizationUtils extends StringUtils {
 
     /***
      * <p>Description: 姓名截取第一个字脱敏</p>
-     * @param name	名字
+     * @param name    名字
      * @return java.lang.String
      * @author zhangjunping
      * @date 2019/4/2 17:12
      */
-    public static String nameEncrypt(String name){
+    public static String nameEncrypt(String name) {
         if (StringUtils.isEmpty(name) || (name.length() < 2)) {
             return name;
         }
-        return "*"+name.substring(1);
+        return "*" + name.substring(1);
     }
 
     /**
      * [电子邮箱] 邮箱前缀仅显示第一个字母，前缀其他隐藏，用星号代替，@及后面的地址显示<例子:g**@163.com>
+     *
      * @param email 邮箱
      * @return 脱敏后邮箱
      */
@@ -98,8 +99,9 @@ public class DesensitizationUtils extends StringUtils {
      * 判断subStr是否在str中
      * 12,13,a 是否包含数字1 false
      * 1,12,13,a 是否包含数字1 true
-     * @param str 字符串
-     * @param subStr 需要判断的字符串
+     *
+     * @param str       字符串
+     * @param subStr    需要判断的字符串
      * @param splitChar 分隔符
      */
     public static boolean characterInString(String str, String subStr, char splitChar) {
