@@ -23,7 +23,7 @@ public class DesensitizationApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DesensitizationApplication.class, args);
-        Test test = new Test("17699998888", "370281199911113090", "6217000088050017995", "dww123456zzz", "zhangjunping@sunjinke.com");
+        Test test = new Test("17699998888", "370281199911113090", "6217000088050017995", "dww123456zzz", "zhangjp@777.com");
         logger.error("{}", JSON.toJSONString(test, true));
         System.out.println("=====启动成功=====");
         logger.error("{}", JSON.toJSONString(new MyObj("fastJson", "zhangjp"), new DesensitizationJsonFilter()));
@@ -32,7 +32,7 @@ public class DesensitizationApplication {
 
     @GetMapping("/index")
     public String index() {
-        Test test = new Test("17699998888", "370281199911113090", "6217000088050017995", "dww123456zzz", "zhangjunping@sunjinke.com");
+        Test test = new Test("17699998888", "370281199911113090", "6217000088050017995", "dww123456zzz", "zhangjp@777.com");
         logger.error("{}", JSON.toJSONString(test, valueFilter));
         logger.error("============end==============");
         return "Index";

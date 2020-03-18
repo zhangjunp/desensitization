@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * 创建时间 2019年三月28日 星期四 10:30
- * 作者: zhangjunping
+ * 作者: zhangjp
  * 描述：自定义脱敏的log4j2 Layout插件
  */
 @Plugin(name = "MyPatternLayout", category = Node.CATEGORY, elementType = Layout.ELEMENT_TYPE, printObject = true)

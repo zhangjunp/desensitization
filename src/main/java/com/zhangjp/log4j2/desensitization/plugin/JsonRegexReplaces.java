@@ -9,7 +9,7 @@ import org.apache.logging.log4j.status.StatusLogger;
 
 /**
  * 创建时间 2019年四月01日 星期一 9:07
- * 作者: zhangjunping
+ * 作者: zhangjp
  * 描述：自定义插件（基于正则表达式实现日志脱敏）
  */
 @Plugin(name = "jsonReplaces", category = "Core", printObject = true)

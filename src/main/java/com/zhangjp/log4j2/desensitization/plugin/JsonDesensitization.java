@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  * 创建时间 2019年四月01日 星期一 9:39
- * 作者: zhangjunping
+ * 作者: zhangjp
  * 描述：json日志格式脱敏
  */
 @Plugin(name = "jsonReplace", category = "Core", printObject = true)

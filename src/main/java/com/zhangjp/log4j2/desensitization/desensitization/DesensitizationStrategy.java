@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 创建时间 2019年四月04日 星期四 10:43
- * 作者: zhangjunping
+ * 作者: zhangjp
  * 描述：脱敏器策略工厂
  */
 public interface DesensitizationStrategy {
@@ -16,7 +16,7 @@ public interface DesensitizationStrategy {
      * <p>Description: 脱敏规则</p>
      * @param plaintext 明文
      * @return java.lang.String
-     * @author zhangjunping
+     * @author zhangjp
      * @date 2019/4/2 20:43
      */
     String produceCipherText(String plaintext);

@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * 创建时间 2019年四月04日 星期四 10:45
- * 作者: zhangjunping
+ * 作者: zhangjp
  * 描述：默认脱敏器
  */
 @Component

@@ -5,7 +5,7 @@ import org.springframework.util.DigestUtils;
 
 /**
  * 创建时间 2019年四月02日 星期二 17:00
- * 作者: zhangjunping
+ * 作者: zhangjp
  * 描述：脱敏工具类
  */
 public class DesensitizationUtils extends StringUtils {
@@ -14,7 +14,7 @@ public class DesensitizationUtils extends StringUtils {
      * <p>Description: md5 方式</p>
      * @param plaintext 明文
      * @return java.lang.String
-     * @author zhangjunping
+     * @author zhangjp
      * @date 2019/4/2 17:10
      */
     public static String md5(String plaintext) {
@@ -25,7 +25,7 @@ public class DesensitizationUtils extends StringUtils {
      * <p>Description: 手机号码前三后四脱敏</p>
      * @param mobile 手机号
      * @return java.lang.String
-     * @author zhangjunping
+     * @author zhangjp
      * @date 2019/4/2 17:11
      */
     public static String mobileEncrypt(String mobile) {
@@ -40,7 +40,7 @@ public class DesensitizationUtils extends StringUtils {
      *
      * @param id 身份证号
      * @return java.lang.String
-     * @author zhangjunping
+     * @author zhangjp
      * @date 2019/4/2 17:12
      */
     public static String idEncrypt(String id) {
@@ -54,7 +54,7 @@ public class DesensitizationUtils extends StringUtils {
      * <p>Description: 卡号三后四脱敏</p>
      * @param card 卡号
      * @return java.lang.String
-     * @author zhangjunping
+     * @author zhangjp
      * @date 2019/4/2 17:12
      */
     public static String cardEncrypt(String card) {
@@ -68,7 +68,7 @@ public class DesensitizationUtils extends StringUtils {
      * <p>Description: 姓名截取第一个字脱敏</p>
      * @param name    名字
      * @return java.lang.String
-     * @author zhangjunping
+     * @author zhangjp
      * @date 2019/4/2 17:12
      */
     public static String nameEncrypt(String name) {

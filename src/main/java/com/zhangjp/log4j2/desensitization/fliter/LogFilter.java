@@ -11,7 +11,7 @@ import java.util.UUID;
 
 /**
  * 创建时间 2019年四月04日 星期四 11:18
- * 作者: zhangjunping
+ * 作者: zhangjp
  * 描述：这边是日志记录这次请求的追踪信息 以便查找信息
  */
 @WebFilter
